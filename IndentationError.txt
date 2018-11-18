@@ -1,0 +1,95 @@
+
+There is in fact multiples things you need to know about indentation in Python:
+
+Python really care about indention.
+In a lot of other language the indention is not necessary but improve the readability. In Python indentation replaces the keyword begin / end or { } and is therefore necessary.
+
+This is verified before the execution of the code, therefore even if the code with the indentation error is never reach, it won't work.
+
+There are different indention errors and you reading them helps a lot:
+1. "IndentationError: expected an indented block"
+
+They are two main reasons why you can have such an error:
+
+- You have a ":" without an indented block behind.
+
+Here are two examples:
+
+Example 1, no indented block:
+
+Input:
+
+if 3 != 4:
+    print("usual")
+else:
+Output:
+
+  File "<stdin>", line 4
+
+    ^
+IndentationError: expected an indented block
+The output states that you need to have an indented block line 4, after the else: statement
+
+Example 2, unindented block:
+
+Input:
+
+if 3 != 4:
+print("usual")
+Output
+
+  File "<stdin>", line 2
+    print("usual")
+        ^
+IndentationError: expected an indented block
+The output states that you need to have an indented block line 2, after the if 3 != 4: statement
+
+- You are using Python2.x and have a mix of tabs and spaces:
+
+Input
+
+def foo():
+    if 1:
+        print 1
+Please note that before if, there is a tab, and before print there is 8 spaces.
+
+Output:
+
+  File "<stdin>", line 3
+    print 1
+      ^
+IndentationError: expected an indented block
+It's quite hard to understand what is happening here, it's seem that there is an indent block... But as I said, I've used tabs and spaces, and you should never do that.
+
+You can get some info here.
+Remove all tabs and replaces them by four spaces.
+And configure your editor to do that automatically.
+2. "IndentationError: unexpected indent"
+
+It is important to indent blocks, but only blocks that should be indent. So basically this error says:
+
+- You have an indented block without a ":" before it.
+
+Example:
+
+Input:
+
+a = 3
+  a += 3
+Output:
+
+  File "<stdin>", line 2
+    a += 3
+    ^
+IndentationError: unexpected indent
+The output states that he wasn't expecting an indent block line 2, then you should remove it.
+
+3. "TabError: inconsistent use of tabs and spaces in indentation" (python3.x only)
+
+You can get some info here.
+But basically it's, you are using tabs and spaces in your code.
+You don't want that.
+Remove all tabs and replaces them by four spaces.
+And configure your editor to do that automatically.
+Eventually, to come back on your problem:
+Just look at the line number of the error, and fix it using the previous information.
